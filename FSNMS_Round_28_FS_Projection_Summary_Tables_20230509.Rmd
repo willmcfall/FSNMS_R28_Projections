@@ -1,5 +1,5 @@
 ---
-title: "FSNMS Round 28 Data Recoding and Analysis"
+title: "FSNMS Round 28 Data Projection"
 author: "William Mcfall - WFP South Sudan RAM Officer"
 date: "`r format(Sys.time(), '%B %d, %Y')`"
 output:
@@ -1442,10 +1442,6 @@ r %>% pivot_longer(cols = 2:13, names_to ="month", values_to = "percentage") -> 
 t$month <- factor(t$month, levels = c("jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"))
   
 t %>% filter(interview.section_a.A04 == "Northern Bahr el Ghazal" | interview.section_a.A04 == "Unity" | interview.section_a.A04 == "Upper Nile" | interview.section_a.A04 == "Warrap" | interview.section_a.A04 == "Western Bahr el Ghazal") %>% ggplot(aes(x=month, y=percentage)) + geom_bar(stat="identity", fill = "#007DBC") + facet_wrap(~interview.section_a.A04) + theme_minimal()
-
-# t %>% filter(interview.section_a.A04 == "Warrap") %>% ggplot(aes(x=month, y=percentage)) + geom_bar(stat="identity", fill = "#007DBC") + facet_wrap(~interview.section_a.A04) +
-#   geom_text(aes(label = round(percentage*100, 1), vjust = -0.3)) + theme_minimal()
-
 
 
 ########################################################################
